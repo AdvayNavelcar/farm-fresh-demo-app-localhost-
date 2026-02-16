@@ -1,0 +1,449 @@
+/* ================================
+   GLOBAL LAYOUT FIX (DO NOT REMOVE)
+   ================================ */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+/* style.css */
+:root {
+    --primary-green: #38761d;
+    --secondary-green: #6aa84f;
+    --accent-color: #ffd966;
+    --background-light: #f7f7f7;
+    --error-red: #cc0000;
+    --success-green: #008000;
+    --button-edit: #f1c40f;
+    --button-edit-hover: #d3a80c;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-light);
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Layouts --- */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+
+/* -------------------------------------------
+ * --- LOGIN/SIGNUP SPECIFIC STYLES (V2) ----
+ * -------------------------------------------
+ */
+body.login-page {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px; /* Wider, less square */
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    text-align: center; 
+}
+
+.auth-container h2 {
+    color: var(--primary-green); 
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.auth-container input[type="text"], 
+.auth-container input[type="email"], 
+.auth-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.auth-container .form-card button[type="submit"] {
+    margin-top: 20px;
+}
+
+.auth-container .form-card {
+    background-color: var(--background-light);
+    border: none;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+}
+
+.auth-container .form-card h3 {
+    color: var(--primary-green);
+    border-bottom: 1px solid var(--secondary-green);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* -------------------------------------------
+ * --- ADMIN FORM STYLES (NEW) -------------
+ * -------------------------------------------
+ */
+.add-product-panel-wrapper {
+    max-width: 700px; /* Wide panel, centered on the admin page */
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+    /* Remove the default border and shadow from the inner form-card */
+}
+.add-product-panel-wrapper > .form-card {
+    border: none;
+    box-shadow: none;
+    padding: 30px;
+}
+
+.add-product-panel-wrapper h3 {
+    font-size: 1.6em;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--secondary-green);
+    margin-bottom: 20px;
+}
+
+/* Admin Table Styles */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.admin-table th, .admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+.admin-table th {
+    background-color: var(--secondary-green);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+.admin-table tr:hover {
+    background-color: #f9f9f9;
+}
+.admin-table img {
+    border-radius: 4px;
+}
+.admin-table td:last-child {
+    white-space: nowrap;
+}
+
+/* Edit Form inside Table */
+.edit-form-container { 
+    background-color: #f0fff0; /* Very light green background */
+    border: 1px solid var(--success-green); 
+    padding: 20px; 
+    border-radius: 8px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+    margin: 10px 0;
+}
+.edit-form-container h4 { 
+    width: 100%; 
+    margin: 0 0 15px 0; 
+    color: var(--primary-green);
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+
+/* --- Responsive Edit Form Input Fixes --- */
+.edit-form-container input:not([type="hidden"]):not([type="checkbox"]):not([type="file"]), 
+.edit-form-container select { 
+    width: 100%; /* Default to 100% width (stack vertically) for small screens */
+    display: inline-block; 
+    margin: 0;
+    padding: 8px;
+}
+
+@media (min-width: 600px) {
+    /* At 600px and up, switch to 50% width to show two inputs per row */
+    .edit-form-container input:not([type="hidden"]):not([type="checkbox"]):not([type="file"]), 
+    .edit-form-container select { 
+        width: calc(50% - 7.5px); /* 50% minus half the gap */
+    }
+}
+/* -------------------------------------- */
+
+.edit-form-container .checkbox-group { 
+    width: 100%; /* Checkbox group spans full width */
+    margin-bottom: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+/* FIX: Ensure action forms span 100% width to force buttons onto a new line */
+.edit-form-container form { 
+    margin: 0; 
+    width: 100%; /* Important fix */
+    display: inline-block; /* Allows the forms to stack */
+}
+.edit-form-container button {
+    margin-top: 0;
+    width: auto;
+    padding: 8px 15px;
+}
+.btn-save { width: 150px; }
+.btn-cancel { background-color: #999; width: 100px; }
+.btn-edit { background-color: var(--button-edit); color: black; width: 45%; margin-right: 5px; }
+.btn-edit:hover { background-color: var(--button-edit-hover); }
+.btn-delete { background-color: var(--error-red); width: 45%; }
+.btn-delete:hover { background-color: #a00000; }
+
+/* --- Header & Nav --- */
+.header {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+.admin-link {
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+}
+.location-header {
+    grid-column: 1 / -1; /* Span all columns in the grid */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--secondary-green);
+}
+.location-tag {
+    color: var(--primary-green);
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* --- Cards & Forms (General) --- */
+.product-card, .form-card { 
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.product-card {
+    text-align: center;
+}
+.product-image-container {
+    height: 150px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.placeholder-text {
+    color: #666;
+    font-style: italic;
+}
+.price {
+    font-size: 1.2em;
+    color: var(--primary-green);
+    font-weight: bold;
+}
+.availability-status p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* --- Buttons & Inputs (General) --- */
+button, input[type="submit"] {
+    background-color: var(--secondary-green);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+button:hover:not(:disabled), input[type="submit"]:hover {
+    background-color: var(--primary-green);
+}
+button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+input[type="text"]:not(.auth-container input), 
+input[type="password"]:not(.auth-container input), 
+input[type="email"]:not(.auth-container input), 
+input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+/* --- Messages --- */
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    grid-column: 1 / -1; /* Spans across entire grid */
+}
+.success {
+    background-color: #e6ffe6;
+    border: 1px solid var(--success-green);
+    color: var(--success-green);
+}
+.error {
+    background-color: #ffe6e6;
+    border: 1px solid var(--error-red);
+    color: var(--error-red);
+}
+/* Admin Location Flags */
+.admin-table span.success {
+    background-color: var(--success-green);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-right: 2px;
+}
+.admin-table span.error {
+    background-color: var(--error-red);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-right: 2px;
+}
+/* ================================
+   STICKY FOOTER – FINAL & STABLE
+   ================================ */
+
+/* This wrapper absorbs extra space and stops footer jumping */
+.page-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer itself */
+.site-footer {
+    background: linear-gradient(90deg, #2f5d1e 80%, #6aa84f 100%);
+    color: #ffffff;
+    padding: 30px 20px 15px;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -4px 18px rgba(56, 118, 29, 0.10);
+}
+
+/* Footer content layout */
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.footer-section {
+    max-width: 400px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+    color: #f1c232;
+    font-size: 1.1em;
+}
+
+.footer-section p {
+    margin: 6px 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.footer-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #f1c232;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.85em;
+    color: #e0e0e0;
+}
+
+/* Mobile fix */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-section {
+        max-width: 100%;
+    }
+}
+

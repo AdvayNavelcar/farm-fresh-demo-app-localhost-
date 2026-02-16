@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Farm Fresh</title>
+    <meta http-equiv="refresh" content="0;url=home.php">
+</head>
+<body>
+    <p>Loading the Farm Fresh App... <a href="home.php">Click here if you are not redirected.</a></p>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Fresh - Fresh Produce Delivered</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body.landing {
+            background: linear-gradient(120deg, #e6ffe6 0%, #f1f8e9 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            text-align: center;
+        }
+        .hero-logo {
+            font-size: 4em;
+            margin-bottom: 0.2em;
+        }
+        .hero-title {
+            font-size: 2.5em;
+            color: #38761d;
+            font-weight: bold;
+            margin-bottom: 0.3em;
+        }
+        .hero-desc {
+            font-size: 1.3em;
+            color: #444;
+            margin-bottom: 1.5em;
+        }
+        .cta-btn {
+            background: linear-gradient(90deg, #6aa84f 60%, #f1c232 100%);
+            color: #fff;
+            font-size: 1.2em;
+            padding: 18px 48px;
+            border: none;
+            border-radius: 32px;
+            font-weight: bold;
+            box-shadow: 0 4px 16px rgba(56,118,29,0.08);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .cta-btn:hover {
+            background: linear-gradient(90deg, #38761d 60%, #f1c232 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .landing-footer {
+            text-align: center;
+            color: #888;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body class="landing">
+    <div class="hero">
+        <div class="hero-logo">🌱</div>
+        <div class="hero-title">Farm Fresh</div>
+        <div class="hero-desc">Order the freshest fruits, vegetables, and herbs—delivered from local farms to your doorstep. Location-based stock, persistent cart, and a seamless shopping experience.</div>
+        <a href="home.php"><button class="cta-btn">Shop Now</button></a>
+    </div>
+    <div class="landing-footer">&copy; 2026 Farm Fresh. Eat local, eat healthy.</div>  
+</body>
+</html>
